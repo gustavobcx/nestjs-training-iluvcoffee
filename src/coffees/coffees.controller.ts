@@ -25,7 +25,7 @@ export class CoffeesController {
     private readonly coffeesService: CoffeesService,
     @Inject(REQUEST) private readonly request: Request,
   ) {
-    console.log(request);
+    // console.log(request);
   }
 
   @Get()
