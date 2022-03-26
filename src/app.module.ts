@@ -9,6 +9,8 @@ import { ConfigModule } from '@nestjs/config';
 import { CommonModule } from './common/common.module';
 import * as Joi from '@hapi/joi';
 import appConfig from './config/app.config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { CoffeesMongoModule } from './coffees-mongo/coffees-mongo.module';
 
 @Module({
   imports: [
@@ -24,6 +26,12 @@ import appConfig from './config/app.config';
         synchronize: true, // disable in production and use migrations
       }),
     }),
+    MongooseModule.forRoot(
+      'mongodb://mongo1:27017,mongo2:27018,mongo3:27019/nest-course',
+      {
+        replicaSet: 'rs0',
+      },
+    ),
     ConfigModule.forRoot({
       load: [appConfig],
       validationSchema: Joi.object({
@@ -34,6 +42,7 @@ import appConfig from './config/app.config';
       // envFilePath: '.environment',
     }),
     CoffeesModule,
+    CoffeesMongoModule,
     // CoffeeRatingModule,
     DatabaseModule,
     CommonModule,
