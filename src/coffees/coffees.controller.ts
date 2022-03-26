@@ -58,12 +58,12 @@ export class CoffeesController {
   @Post()
   // @HttpCode(HttpStatus.GONE)
   create(@Body() createCoffeeDto: CreateCoffeeDto) {
-    this.coffeesService.create(createCoffeeDto);
+    return this.coffeesService.create(createCoffeeDto);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
-    this.coffeesService.update(id, updateCoffeeDto);
+    return this.coffeesService.update(id, updateCoffeeDto);
   }
 
   @Delete(':id')
