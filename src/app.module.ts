@@ -34,7 +34,7 @@ import appConfig from './config/app.config';
       // envFilePath: '.environment',
     }),
     CoffeesModule,
-    CoffeeRatingModule,
+    // CoffeeRatingModule,
     DatabaseModule,
     CommonModule,
   ],
