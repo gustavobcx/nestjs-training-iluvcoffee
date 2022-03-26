@@ -13,6 +13,7 @@ import {
   // Res,
 } from '@nestjs/common';
 import { REQUEST } from '@nestjs/core';
+import { ApiForbiddenResponse, ApiResponse } from '@nestjs/swagger';
 import { Request } from 'express';
 import { Protocol } from 'src/common/decorators/protocol.decorator';
 import { Public } from 'src/common/decorators/public.decorator';
@@ -31,6 +32,8 @@ export class CoffeesController {
     // console.log(request);
   }
 
+  // @ApiResponse({ status: 403, description: 'Forbidden.' })
+  @ApiForbiddenResponse({ description: 'Forbidden.' })
   @Public()
   @Get()
   async findAll(
